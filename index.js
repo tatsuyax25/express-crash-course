@@ -15,15 +15,18 @@ const app = express();
 //   res.send('<h1>Hello, World!!</h1>');
 // });
 
-app.get('/', (req, res) => {
-  // Handle GET requests to the root URL ('/')
-  // Respond by sending the HTML file located in the 'public' folder
+// app.get('/', (req, res) => {
+//   // Handle GET requests to the root URL ('/')
+//   // Respond by sending the HTML file located in the 'public' folder
 
-  // __dirname gives the absolute path to the current directory
-  // path.join(...) builds a complete file path to 'public/index.html'
-  // res.sendFile(...) sends that HTML file as the response
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-})
+//   // __dirname gives the absolute path to the current directory
+//   // path.join(...) builds a complete file path to 'public/index.html'
+//   // res.sendFile(...) sends that HTML file as the response
+//   res.sendFile(path.join(__dirname, "public", "index.html"));
+// })
+
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Define the port number the server will listen on
 // Uses the environment variable PORT if available, otherwise defaults to 3000
