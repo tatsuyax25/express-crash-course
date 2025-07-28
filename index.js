@@ -5,31 +5,15 @@ const express = require('express');
 // It's used to safely construct file paths across different operating systems
 const path = require('path');
 
+// Import the members array from the Members.js file
+// This array simulates a database of members
+const members = require('./Members');
+
 // Create an instance of an Express application
 const app = express();
 
-// Define an array of members
-// This will be used to simulate a database of members
-const members = [
-  { id: 1, 
-    name: 'John Doe', 
-    email: 'johndoe@gmail.com', 
-    status: 'active' },
-  { id: 2,
-    name: 'Jane Doe', 
-    email: 'janedoe@gmail.com',
-    status: 'inactive' },
-  { id: 3,
-    name: 'Jim Doe',
-    email: 'jimdoe@gmail.com',
-    status: 'active' 
-  }
-];
-
-app.get('/api/members', (req, res) => {
-  // Respond with a JSON object containing an array of members
-  res.json(members);
-})
+// Respond with a JSON object containing an array of members
+app.get('/api/members', (req, res) => res.json(members));
 
 // Define a route handler for the root URL ('/')
 // When a GET request is made to '/', this function runs
