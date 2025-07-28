@@ -12,6 +12,21 @@ const members = require('./Members');
 // Create an instance of an Express application
 const app = express();
 
+// Middleware function to log requests
+// This function will run for every incoming request to the server
+// It can be used to log information about the request, such as the HTTP method and URL
+// This is a placeholder function that currently just logs 'Hello' to the console
+const logger = (req, res, next) => {
+  // Log the HTTP method and URL of the incoming request
+  console.log('Hello');
+  // Call the next middleware function in the stack
+  next();
+}
+
+// Use the logger middleware for all incoming requests
+// This means that every request to the server will first go through the logger function
+app.use(logger);
+
 // Respond with a JSON object containing an array of members
 app.get('/api/members', (req, res) => res.json(members));
 
