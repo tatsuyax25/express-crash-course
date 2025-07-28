@@ -8,6 +8,29 @@ const path = require('path');
 // Create an instance of an Express application
 const app = express();
 
+// Define an array of members
+// This will be used to simulate a database of members
+const members = [
+  { id: 1, 
+    name: 'John Doe', 
+    email: 'johndoe@gmail.com', 
+    status: 'active' },
+  { id: 2,
+    name: 'Jane Doe', 
+    email: 'janedoe@gmail.com',
+    status: 'inactive' },
+  { id: 3,
+    name: 'Jim Doe',
+    email: 'jimdoe@gmail.com',
+    status: 'active' 
+  }
+];
+
+app.get('/api/members', (req, res) => {
+  // Respond with a JSON object containing an array of members
+  res.json(members);
+})
+
 // Define a route handler for the root URL ('/')
 // When a GET request is made to '/', this function runs
 // app.get('/', (req, res) => {
